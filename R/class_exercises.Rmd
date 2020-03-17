@@ -48,6 +48,33 @@ Load the `tidyverse` and `gapminder` packages. We are using `tidyverse` to acces
 library(gapminder)
 library(tidyverse)
 
+# SDMVPSU
+# SDMVSTRA
+# WTMEC2YR
+
+# income variable name changed 
+
+# datasets needed
+
+# Demographics data (contain pregancy question)
+
+## Examination: 
+# BP exam data
+
+# Questionnare: 
+## BP and chol, 
+## diabetes, 
+## Hospital utilization, 
+## health insurance
+## cigarette smoking in adults
+
+# Lab
+# albumin to creatinine data
+# total and hdl chol 
+# standard biochemistry
+# glycohemoglobin data
+
+
 ```
 
 Note that I am using chunk options `message = FALSE, echo = TRUE` because loading R packages will often produce printed output that will show up in your knitted Rmarkdown document. Saying `message = FALSE` suppresses printed messages, while saying `echo = TRUE` ensures that the code in your chunk will be printed. This is how I would like you to organize loading packages in your homework .Rmd files. 
