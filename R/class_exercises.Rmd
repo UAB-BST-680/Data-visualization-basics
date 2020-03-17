@@ -1,0 +1,166 @@
+---
+title: "Data visualization basics"
+output: 
+  html_document:
+    df_print: paged
+    highlight: tango
+    toc: true
+    toc_float: true
+    theme: united
+    fig_width: 7
+    fig_height: 4
+    fig_caption: true
+---
+
+# Overview
+
+The `gapminder` data are related to a [famous TED talk](https://www.youtube.com/watch?v=hVimVzgtD6w) given by Hans Rosling. In his talk, Dr. Rosling shows an animated visualization depicting the relationship between life expectancy and average income levels by country. Our goal in this module is to reproduce Dr. Rosling's visualization.
+
+We will access the `gapminder` data from the [gapminder R package](https://github.com/jennybc/gapminder). This package contains a dataset (technically, a `tibble`) called `gapminder` with 6 variables:
+
+| variable    | meaning                  |
+|:------------|:-------------------------|
+| country     | country                  |
+| continent   | continent                |
+| year        | year                     |
+| lifeExp     | life expectancy at birth |
+| pop         | total population         |
+| gdpPercap   | per-capita GDP           |
+
+Per-capita GDP (Gross domestic product) is given in units of [international dollars](http://en.wikipedia.org/wiki/Geary%E2%80%93Khamis_dollar), "a hypothetical unit of currency that has the same purchasing power parity that the U.S. dollar had in the United States at a given point in time" -- 2005, in this case.
+
+__Note__: the gapminder R package exists for the purpose of teaching and making code examples. It is an excerpt of data found in specific spreadsheets on Gapminder.org circa 2010. It is not a definitive source of socioeconomic data.
+
+# Pre-requisites
+
+Before starting these exercises, you should have a good understanding of 
+
+1. The [Data Visualization Basics](https://rstudio.cloud/learn/primers/1.1) Primer.
+
+1. Chapters 1-3 of [R for Data Science](https://r4ds.had.co.nz/index.html)
+
+# Packages
+
+Load the `tidyverse` and `gapminder` packages. We are using `tidyverse` to access the `ggplot2` package and using `gapminder` to access the data.
+
+```{r, message = FALSE, echo = TRUE}
+
+library(gapminder)
+library(tidyverse)
+
+```
+
+Note that I am using chunk options `message = FALSE, echo = TRUE` because loading R packages will often produce printed output that will show up in your knitted Rmarkdown document. Saying `message = FALSE` suppresses printed messages, while saying `echo = TRUE` ensures that the code in your chunk will be printed. This is how I would like you to organize loading packages in your homework .Rmd files. 
+
+# Inspect your data
+
+In `gapminder`, each country has 12 rows distinguished by year.
+
+```{r}
+
+# can also use View(gapminder)
+gapminder
+
+```
+
+# Exercise 1
+
+Create a scatter plot using `gdpPercap` as the x-variable and `lifeExp` as the y-variable: 
+
+```{r}
+
+# your plot should look like this:
+read_rds('solutions/01_solution.rds')
+
+```
+
+# Exercise 2 
+
+Modify your figure from exercise 1: transform the scale of your x-axis to be in log base 10 units. (See `?scale_x_log10`)
+
+```{r}
+
+# your plot should look like this:
+read_rds('solutions/02_solution.rds')
+
+```
+
+# Exercise 3
+
+Add x- and y-axis labels to your figure from exercise 2. 
+
+```{r}
+
+# your plot should look like this:
+read_rds('solutions/03_solution.rds')
+
+```
+
+# Exercise 4
+
+Add a smoothed curve to your plot, showing the overall population trend. (See `?geom_smooth`)
+
+```{r}
+
+# your plot should look like this:
+read_rds('solutions/04_solution.rds')
+
+```
+
+# Exercise 5
+
+Adjust the points in your graph: 
+
+1. Set their `shape` to be `21`
+1. Set their `color` to be `'black'` 
+1. Set their `fill` to be `'grey'`
+
+Adjust the overall population trend as well: 
+
+1. Set the line's color to be `'red'`
+1. Remove the standard errors (shaded region around the line) from the plot.
+
+```{r}
+
+# your plot should look like this:
+read_rds('solutions/05_solution.rds')
+
+```
+
+# Exercise 6
+
+Go to the [ggplot2 theme() reference page](https://ggplot2.tidyverse.org/reference/ggtheme.html) and scroll through the pictures that show some of the built-in ggplot2 themes. Pick a theme that you like and add it to the figure you created in exercise 5. 
+
+```{r}
+
+# your plot should look like this:
+read_rds('solutions/06_solution.rds')
+
+```
+
+
+# Exercise 7
+
+There is something happening in the upper levels of income. The population trend between income and life expectancy changes direction. There is an R package called `plotly` that can help you explore `ggplot` figures interactively. Converting a `ggplot2` figure into a `plotly` figure is straightforward:
+
+
+```{r}
+
+library(plotly, warn.conflicts = FALSE)
+
+# step 1: create a ggplot2 figure
+# step 2: if you want to see data for individual points in your
+#         graph, you can set the label values using aes(), like this:
+gg_figure <- read_rds('solutions/06_solution.rds') + 
+  aes(label = country)
+# step 3: use ggplotly on the figure
+ggplotly(gg_figure)
+
+```
+
+You can tell by hovering your mouse over the far right points in the figure that the higher income but lower life expectancy country is Kuwait. Now, re-create this figure, but use `year` as a label instead of `country`, and identify the years that account for these points. 
+
+Once you've seen the year values associated with the points in the upper-income but lower than expected life expectancy, formulate a hypothesis explaining your data. After you've written your hypothesis down, go to [Wikipedia's Kuwait page](https://en.wikipedia.org/wiki/History_of_Kuwait) and read about their modern history. Was your hypothesis correct?
+
+
+
