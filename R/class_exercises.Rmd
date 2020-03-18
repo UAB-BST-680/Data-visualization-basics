@@ -49,7 +49,8 @@ Load the `tidyverse` and `gapminder` packages. We are using `tidyverse` to acces
 library(gapminder)
 library(tidyverse)
 
-
+# tell knitr to use the project working directory
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 
 
 ```
