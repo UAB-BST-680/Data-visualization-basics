@@ -1,21 +1,22 @@
 ---
 title: "Data visualization basics"
+author:
+  - Byron C. Jaeger^[University of Alabama at Birmingham, bcjaeger@uab.edu]
 output: 
   html_document:
     df_print: paged
     highlight: tango
+    code_folding: hide
     toc: true
     toc_float: true
     theme: united
     fig_width: 7
     fig_height: 4
-    fig_caption: true
 ---
 
 # Overview
 
 The `gapminder` data are related to a [famous TED talk](https://www.youtube.com/watch?v=hVimVzgtD6w) given by Hans Rosling. In his talk, Dr. Rosling shows an animated visualization depicting the relationship between life expectancy and average income levels by country. Our goal in this module is to reproduce Dr. Rosling's visualization.
-
 
 We will access the `gapminder` data from the [gapminder R package](https://github.com/jennybc/gapminder). This package contains a dataset (technically, a `tibble`) called `gapminder` with 6 variables:
 
