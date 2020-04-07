@@ -195,9 +195,9 @@ class: center, middle
 
 ## Dataset terminology
 
-<div class="question">
-What does each row represent? What does each column represent?
-</div>
+
+__Question__: What does each row represent? What does each column represent?
+
 
 ```{r}
 starwars[, 1:5]
@@ -229,14 +229,9 @@ Run the following **in the Console** to view the help
 
 ![starwars-help](img/starwars-help.png)
 
-<div class="question">
-How many rows and columns does this dataset have? 
-</div>
+__Question__: How many rows and columns does this dataset have? 
 
-
-<div class="question">
 Make a prediction: What relationship do you expect to see between height and mass?
-</div>
 
 ---
 
@@ -264,10 +259,11 @@ ggplot(data = starwars) +
 
 ## Mass vs. height
 
-<div class="question">
-How would you describe this relationship? </br>
-Who is the not so tall but really chubby character?
-</div>
+
+__Questions__: 
+- How would you describe this relationship?
+- Who is the not so tall but really chubby character?
+
 
 ```{r fig.width = 6, fig.height=3, echo=FALSE, warning=FALSE}
 ggplot(data = starwars, mapping = aes(x = height, y = mass)) +
@@ -366,6 +362,14 @@ gt::gt(df[, c(1,3)], rowname_col = 'Aesthetics') %>%
   gt::tab_options(table.width = gt::pct(100))
 
 ```
+
+---
+
+## Your turn
+
+- Switch to Rstudio cloud and find the data visualization basics project. 
+
+- Work on completing the problems in `exercises.Rmd` with your teammates.
 
 
 
