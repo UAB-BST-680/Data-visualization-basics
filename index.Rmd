@@ -363,16 +363,3 @@ gt::gt(df[, c(1,3)], rowname_col = 'Aesthetics') %>%
 
 ```
 
----
-
-## Your turn
-
-- Switch to Rstudio cloud and find the data visualization basics project. 
-
-- Work on completing the problems in `exercises.Rmd` with your teammates.
-
-
-
-
-
-
